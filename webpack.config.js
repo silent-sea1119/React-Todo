@@ -30,6 +30,7 @@ module.exports = {
     ],
     alias: {
       applicationStyles: 'app/styles/app.scss',
+      actions: 'app/actions/actions.jsx'
     },
     extensions: ['', '.js', '.jsx']
   },
