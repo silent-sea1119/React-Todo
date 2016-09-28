@@ -10,15 +10,7 @@ var store = require('configureStore').configure();
 var TodoAPI = require('TodoAPI');
 
 
-store.subscribe(() => {
-  var state = store.getState();
-  console.log('New State: ', state);
-  TodoAPI.setTodos(state.todos);
-});
-
-var initialTodos = TodoAPI.getTodos();
-store.dispatch(actions.addTodos(initialTodos));
-
+store.dispatch(actions.startAddTodos());
 
 //load foundation
 require('style!css!foundation-sites/dist/foundation.min.css')
