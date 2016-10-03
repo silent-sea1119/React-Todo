@@ -4,6 +4,8 @@ var df = require('deep-freeze-strict');
 
 var reducers = require('reducers');
 
+
+
 describe('Reducers', () =>{
   describe('searchTextReducer', () => {
     it('should set searchText', () => {
@@ -17,6 +19,31 @@ describe('Reducers', () =>{
     });
   });
 
+  describe('authReducer', () => {
+    it('should update uid to state on LOGIN', () =>{
+      var action = {
+        type:'LOGIN',
+        uid: '1723Aw'
+      };
+
+      var res = reducers.authReducer(undefined, df(action));
+
+      expect(res.uid).toEqual(action.uid);
+    });
+
+    it('should delete uid on the state', () => {
+      const action = {
+        type:'LOGOUT'
+      };
+      const authData = {
+        uid: '123gas'
+      };
+
+      var res = reducers.authReducer(df(authData), df(action));
+    });
+
+    expect(res).toEqual({});
+  });
 
 
   describe('showCompletedReducer', () => {
